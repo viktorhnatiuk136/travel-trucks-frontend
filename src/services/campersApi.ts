@@ -1,0 +1,21 @@
+import axios from "axios";
+import type { Camper, CampersResponse, CampersFilters } from "../types/Camper";
+
+export const campersApi = axios.create({
+  baseURL: "https://campers-api.goit.study",
+});
+
+export const getAllCampers = async (page: number): Promise<CampersResponse> => {
+  const { data } = await campersApi.get("/campers", {
+    params: {
+      page,
+      limit: 4,
+    },
+  });
+  return data;
+};
+
+export const getCamperById = async (id: string): Promise<Camper> => {
+  const { data } = await campersApi.get(`/campers/${id}`);
+  return data;
+};
