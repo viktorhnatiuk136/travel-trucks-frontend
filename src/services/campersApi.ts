@@ -5,11 +5,15 @@ export const campersApi = axios.create({
   baseURL: "https://campers-api.goit.study",
 });
 
-export const getAllCampers = async (page: number): Promise<CampersResponse> => {
+export const getAllCampers = async (
+  page: number,
+  filters: CampersFilters,
+): Promise<CampersResponse> => {
   const { data } = await campersApi.get("/campers", {
     params: {
       page,
-      limit: 4,
+      perPage: 4,
+      ...filters,
     },
   });
   return data;
@@ -17,5 +21,10 @@ export const getAllCampers = async (page: number): Promise<CampersResponse> => {
 
 export const getCamperById = async (id: string): Promise<Camper> => {
   const { data } = await campersApi.get(`/campers/${id}`);
+  return data;
+};
+
+export const getCampersFilters = async (): Promise<CampersFilters> => {
+  const { data } = await campersApi.get("/campers/filters");
   return data;
 };

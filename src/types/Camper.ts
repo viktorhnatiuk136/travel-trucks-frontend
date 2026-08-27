@@ -1,5 +1,5 @@
-type Form = "alcove" | "panel_van" | "integrated" | "semi_integrated";
-type Amenity =
+export type Form = "alcove" | "panel_van" | "integrated" | "semi_integrated";
+export type Amenity =
   | "ac"
   | "bathroom"
   | "kitchen"
@@ -9,8 +9,8 @@ type Amenity =
   | "microwave"
   | "gas"
   | "water";
-type Engine = "diesel" | "petrol" | "hybrid" | "electric";
-type Transmission = "automatic" | "manual";
+export type Engine = "diesel" | "petrol" | "hybrid" | "electric";
+export type Transmission = "automatic" | "manual";
 
 export type Camper = {
   id: string;
@@ -44,7 +44,7 @@ export type CampersResponse = {
 
 export type CampersFilters = {
   location?: string;
-  form?: Form;
-  transmission?: Transmission;
-  engine?: Engine;
+  forms?: Form;
+  transmissions?: Transmission;
+  engines?: Engine;
 };
